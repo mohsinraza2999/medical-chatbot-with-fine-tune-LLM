@@ -34,7 +34,8 @@ medical-llama-chatbot/
 │
 ├── data/                 # Raw and preprocessed medical text data
 ├── scripts/              # Training and preprocessing scripts
-├── notebooks/            # Development and experiment notebooks
+  
+├── notebooks/            # Experiment notebooks
 ├── config/               # Model and training config files
 └── README.md             # Project documentation
 </code></pre>
@@ -59,16 +60,20 @@ cd medical-llama-chatbot
 <h2>🧪 Fine-Tuning Process</h2>
 
 <ol>
-  <li><strong>Data Preprocessing</strong><br>
-      Clean, tokenize, and format the medical text into instruction-style prompts.
+  <li><strong>Data Preprocessing and CSV File Structure</strong><br>
+      Clean, tokenize, and format the medical text into instruction-style prompts.<br>
+      The training csv file should be in the below formate<br>
+          <pre><code> 
+      {'Column_name': '<s>[INST]Q. Can kitten allergy in family members make me allergic too?[/INST] Hi.  Allergy can run in families, you have a chance of being allergic as your father and brother are allergic to cats but not a must. Being close to cats in the past for many years is a good indicator that you might not be allergic to cats but still allergy can develop at any age. You can do a skin allergy test by a dermatologist (skin doctor) to know if you are allergic to cats or not. Skin allergy test. ?Allergy. Avoid contact with cats, if proved to be allergic.</s>'}
+      </code></pre>
+    
   </li>
   <li><strong>Model Training with LoRA/QLoRA</strong><br>
-      <pre><code>python scripts/train_with_lora.py --config config/lora_config.yaml</code></pre>
+      <pre><code>python scripts/train_model.py </code></pre>
   </li>
-  <li><strong>Save and Load Model</strong><br>
+  <li><strong>Chatting with Bot</strong><br>
       <pre><code>
-tokenizer.save_pretrained('models/tokenizer/')
-model.save_pretrained('models/llama-med/')
+ <pre><code>python scripts/inferrence.py </code></pre>
       </code></pre>
   </li>
 </ol>
@@ -119,6 +124,7 @@ print(tokenizer.decode(output[0], skip_special_tokens=True))
   For questions, reach out via <a href="https://github.com/medical-chatbot-with-fine-tune-LLM/issues">GitHub Issues</a> or email 
   <a href="mailto:mohsinraza2999@gmail.com">mohsinraza2999@gmail.com</a>.
 </p>
-
+<h2>📬 Auther</h2>
+<p>Mohsin Raza</p>
 </body>
 </html>
